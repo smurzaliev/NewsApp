@@ -72,7 +72,7 @@ class MainController: UIViewController {
             error = true
             
         } else {
-            let url = URL(string: "https://newsapi.org/v2/everything?q=\(topic)&from=2022-01-22&sortBy=publishedAt&apiKey=430a142e68114f0dacd82264f44f34a9")
+            let url = URL(string: "https://newsapi.org/v2/everything?q=\(topic)&from=2022-01-23&sortBy=publishedAt&apiKey=430a142e68114f0dacd82264f44f34a9")
             
             URLSession.shared.dataTask(with: url!) { data, response, error in
                 
