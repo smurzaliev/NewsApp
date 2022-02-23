@@ -14,6 +14,8 @@ class NewsDetailsController: UIViewController {
     private var document = NewsBookmarkDocument()
     var url: String? = nil
     var title1: String? = nil
+    var imageUrl: String? = nil
+    var descr: String? = nil
     private lazy var webView: WKWebView = {
         return WKWebView()
     }()
@@ -36,7 +38,7 @@ class NewsDetailsController: UIViewController {
     }
     
     @objc func bookmarkAdd() {
-        document.saveNews(newsUrl: url!, newsTitle: title1!)
+        document.saveNews(newsUrl: url!, newsTitle: title1!, newsImageUrl: imageUrl!, newsDescr: descr!)
         let alert = UIAlertController(title: "Success!", message: "Bookmark added. Go to Bookmarks page to see.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { action in }))
         present(alert,animated: true)

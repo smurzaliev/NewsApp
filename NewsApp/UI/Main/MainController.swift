@@ -164,6 +164,9 @@ extension MainController: UITableViewDelegate, UITableViewDataSource {
         let destVC = NewsDetailsController()
         destVC.url = url
         destVC.title1 = models?.articles?[indexPath.row].title
+        destVC.url = models?.articles?[indexPath.row].url
+        destVC.descr = models?.articles?[indexPath.row].articleDescription
+        destVC.imageUrl = models?.articles?[indexPath.row].urlToImage
         navigationController?.pushViewController(destVC, animated: true)
     }
 }

@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 class NewsBookmarkController: UIViewController {
     
@@ -53,7 +54,9 @@ extension NewsBookmarkController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let index = indexPath.row
         let cell = tableView.dequeueReusableCell(withIdentifier: "BookmarkCell", for: indexPath) as! BookmarkCell
-        cell.newsTitle.text = "\(index). \(document.bookmarkNewsTitle[index])"
+        cell.newsTitle.text = document.bookmarkNewsTitle[index]
+        cell.newsDescr.text = document.bookmarkNewsDescr[index]
+        cell.newsImage.kf.setImage(with: URL(string: document.bookmarkNewsImageURL[index]))
         return cell
     }
     
@@ -61,7 +64,10 @@ extension NewsBookmarkController: UITableViewDelegate, UITableViewDataSource {
         let url = document.bookmarkNewsUrl[indexPath.row]
         let destVC = BookmarkedNewsDetailController()
         destVC.url = url
-        
         navigationController?.pushViewController(destVC, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 90
     }
 }
